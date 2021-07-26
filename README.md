@@ -1,5 +1,5 @@
-# We-Love-Movies
-Thinkful Project We Love Movies
+# About We-Love-Movies
+Thinkful Backend Capstone project, 'We Love Movies', allows users to gain access to data about movies, theaters, and reviews.
 This project is designed to test the student's ability to both build complex servers and access data through a database.
 ## Project Goals
 * Install and use common middleware packages.
