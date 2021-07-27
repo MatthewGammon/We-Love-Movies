@@ -14,19 +14,25 @@ async function movieExists(req, res, next) {
   });
 }
 
-async function read(req, res, next) {
+async function theatersByMovie(req, res) {
+  res.json({ data: await service.theatersByMovie(req.params.movieId) });
+}
+
+async function reviewsByMovie(req, res, next) {
+  res.json({ data: await service.reviewsByMovie(req.params.movieId) });
+}
+
+async function read(req, res) {
   res.json({ data: res.locals.movie });
 }
 
 async function list(req, res, next) {
-  const isShowing = req.query.is_showing;
-  if (isShowing) {
-    res.json({ data: await service.activeMovies() });
-  }
-  res.json({ data: await service.list() });
+  res.json({ data: await service.list(req.query.is_showing) });
 }
 
 module.exports = {
   list: asyncErrorBoundary(list),
   read: [asyncErrorBoundary(movieExists), asyncErrorBoundary(read)],
+  theatersList: asyncErrorBoundary(theatersByMovie),
+  reviewsList: asyncErrorBoundary(reviewsByMovie),
 };
