@@ -17,7 +17,7 @@ function read(movieId) {
 function list(isShowing) {
   return knex('movies as m')
     .select('m.*')
-    .modify((queryBuilder) => 
+    .modify((queryBuilder) => {
       if (isShowing) {
         queryBuilder
           .join('movies_theaters', 'm.movie_id', 'movies_theaters.movie_id')
