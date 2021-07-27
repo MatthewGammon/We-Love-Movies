@@ -81,8 +81,6 @@ function reviewsByMovie(movieId) {
       'reviews.review_id',
       'reviews.content',
       'reviews.score',
-      'reviews.created_at',
-      'reviews.updated_at',
       'movies.movie_id',
       'critics.critic_id',
       'critics.preferred_name',
