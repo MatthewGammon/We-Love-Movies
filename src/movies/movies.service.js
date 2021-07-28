@@ -2,7 +2,7 @@ const knex = require('../db/connection');
 
 const mapProperties = require('../utils/map-properties');
 
-const addCritics = mapProperties({
+addCritics = mapProperties({
   critic_id: 'critic.critic_id',
   preferred_name: 'critic.preferred_name',
   surname: 'critic.surname',
