@@ -22,15 +22,21 @@ async function reviewsByMovie(req, res, next) {
   res.json({ data: await service.reviewsByMovie(req.params.movieId) });
 }
 
-async function read(req, res) {
+async function create(req, res) {
+  const newMovie = req.body.data;
+  res.status(201).json({ data: await service.createMovie(newMovie) });
+}
+
+function read(req, res) {
   res.json({ data: res.locals.movie });
 }
 
-async function list(req, res, next) {
+async function list(req, res) {
   res.json({ data: await service.list(req.query.is_showing) });
 }
 
 module.exports = {
+  create: [asyncErrorBoundary(create)],
   list: asyncErrorBoundary(list),
   read: [asyncErrorBoundary(movieExists), asyncErrorBoundary(read)],
   theatersList: asyncErrorBoundary(theatersByMovie),
