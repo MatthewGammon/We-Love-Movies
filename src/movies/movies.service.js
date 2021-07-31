@@ -72,7 +72,15 @@ function reviewsByMovie(movieId) {
     .then((data) => data.map((i) => addCritics(i)));
 }
 
+function createMovie(newMovie) {
+  return knex('movies')
+    .insert(newMovie)
+    .returning('*')
+    .then((created) => created[0]);
+}
+
 module.exports = {
+  createMovie,
   read,
   list,
   theatersByMovie,
